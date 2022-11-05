@@ -69,7 +69,13 @@ def arithmetic(request):
                 
             }
 
-            return Response(context)
+            response =  Response(context)
+            response["Access-Control-Allow-Origin"] = "*"
+            response["Access-Control-Allow-Methods"] = "POST,OPTIONS"
+            response["Access-Control-Max-Age"] = "1000"
+            response["Access-Control-Allow-Headers"] = "X-Requested-with,Content-Type"
+
+            return Response(response)
         
 
 
