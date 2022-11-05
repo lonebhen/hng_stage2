@@ -14,6 +14,7 @@ multiplication_listener = ["product","multiply","multiplication","x","X","*"]
 @api_view(['POST'])
 def arithmetic(request): 
     header = {"Access-Control-Allow-Origin":"*"}
+    content = {"X-Requested-with,Content-Type"}
     if request.method == "POST":
         data_query = request.data
         serializer = OperationSerializer(data=data_query)
@@ -76,7 +77,7 @@ def arithmetic(request):
             # context["Access-Control-Max-Age"] = "1000"
             # context["Access-Control-Allow-Headers"] = "X-Requested-with,Content-Type"
 
-            return Response(context,headers=header)
+            return Response(context,headers=header,content_type=content)
         
 
 
