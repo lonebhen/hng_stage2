@@ -71,11 +71,7 @@ def arithmetic(request):
                 
             }
 
-            # # response =  JsonResponse(context)
-            # context["Access-Control-Allow-Origin"] = "*"
-            # context["Access-Control-Allow-Methods"] = "POST,OPTIONS"
-            # context["Access-Control-Max-Age"] = "1000"
-            # context["Access-Control-Allow-Headers"] = "X-Requested-with,Content-Type"
+            
 
             return Response(context,headers=header,content_type="application/json")
         
