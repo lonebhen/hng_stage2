@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.http import JsonResponse
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from .serializers import OperationSerializer
@@ -13,6 +13,7 @@ multiplication_listener = ["product","multiply","multiplication","x","X","*"]
 
 @api_view(['POST'])
 def arithmetic(request): 
+    header = {"Access-Control-Allow-Origin":"*"}
     if request.method == "POST":
         data_query = request.data
         serializer = OperationSerializer(data=data_query)
@@ -69,13 +70,13 @@ def arithmetic(request):
                 
             }
 
-            response =  Response(context)
-            response["Access-Control-Allow-Origin"] = "*"
-            response["Access-Control-Allow-Methods"] = "POST,OPTIONS"
-            response["Access-Control-Max-Age"] = "1000"
-            response["Access-Control-Allow-Headers"] = "X-Requested-with,Content-Type"
+            # # response =  JsonResponse(context)
+            # context["Access-Control-Allow-Origin"] = "*"
+            # context["Access-Control-Allow-Methods"] = "POST,OPTIONS"
+            # context["Access-Control-Max-Age"] = "1000"
+            # context["Access-Control-Allow-Headers"] = "X-Requested-with,Content-Type"
 
-            return Response(response)
+            return Response(context,headers=header)
         
 
 
