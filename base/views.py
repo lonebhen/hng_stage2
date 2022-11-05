@@ -7,9 +7,9 @@ from .serializers import OperationSerializer
 
 
 operations = ["addition","subtraction","multiplication"]
-addition_listener = ["add","sum","addition","summation","plus","adding","+","together","togetheness"]
+addition_listener = ["add","sum","addition","summation","plus","adding","+","together","togetheness","total"]
 substraction_listener = ["difference","minus","deduct","remove","less","deduction","subtraction","subtract","-"]
-multiplication_listener = ["product","multiply","multiplication","x","X","*"]
+multiplication_listener = ["product","multiply","multiplication","x","X","*","times"]
 
 @api_view(['POST'])
 def arithmetic(request): 
@@ -23,6 +23,7 @@ def arithmetic(request):
             received_data = serializer.data
             # print(received_data["operation_type"])
             words = received_data["operation_type"].lower().split()
+            # print(words)
 
 
             
@@ -58,10 +59,7 @@ def arithmetic(request):
 
 
             
-            # print(words)
-            # print(received_data["x"])
-            # return Response(received_data)
-
+            
 
 
             context = {
